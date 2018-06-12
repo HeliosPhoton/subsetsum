@@ -1,28 +1,27 @@
 var numberList = [-7, -3, -2, 8, 5];
-var arrayLength;
+var arrayLength = numberList.length;
 var subZeroBoolean = false;
-arrayLength = numberList.length;
 document.getElementById("numberList").innerHTML = numberList.toString();
 function subsetCalc(arr, arrayLength, sum) {
     //key value pair
-    var subset = new Array();
-    //cumulative sum to see if we've checked the number already
-    var current_sum = 0;
+    var subset = [[]];
     for (var i = 0; i < arrayLength; i++) {
-        current_sum = arr[i];
-        for (var j = i + 1; j < arrayLength; j++) {
-            if (current_sum == sum) {
+        for (var j = 0, len = subset.length; j < len; j++) {
+            var temp = subset[j].concat(arr[i]);
+            subset.push(temp);
+            var s = temp.reduce(function (x, y) { return x + y; });
+            document.write("array: " + arr[i] + " || subset: " + subset[j] + " || temp: " + temp + " || s: " + s + "</br>");
+            if (s === sum) {
                 subZeroBoolean = true;
                 return;
             }
-            current_sum += arr[j];
-            document.write(current_sum + "</br>");
         }
     }
 }
 subsetCalc(numberList, arrayLength, 0);
+document.write("</br> Is there a non-empty subset whose sum is zero? </br>");
 if (subZeroBoolean) {
-    document.getElementById("result").innerHTML = "Yes.";
+    document.write("Yes.");
 }
 else {
     document.getElementById("result").innerHTML = "No.";
