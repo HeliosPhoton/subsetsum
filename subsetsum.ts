@@ -37,5 +37,5 @@ if (subZeroBoolean)
 }
 else
 {
-    document.getElementById("result").innerHTML = "No.";
+    document.write("No.");
 }

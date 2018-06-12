@@ -24,5 +24,5 @@ if (subZeroBoolean) {
     document.write("Yes.");
 }
 else {
-    document.getElementById("result").innerHTML = "No.";
+    document.write("No.");
 }
